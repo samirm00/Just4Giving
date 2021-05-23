@@ -1,19 +1,19 @@
- const initialState = {
-    goods:[] ,
+//  const initialState = {
+//     goods:[] ,
 
- }
+//  }
 
 
- export const goodsInfoReducer = (state = initialState , action) => {
+ export const goodsInfoReducer = (state = [] , action) => {
     switch (action.type){
         case 'CREATE_GOODS':
-            return{ ...action.payload} ;
+            return{ ...state.goods ,...action.payload} ;
 
         case 'UPDATE_GOODS':
-            return{ ...action.payload} ;
+            return{...state.goods, ...action.payload} ;
 
         case 'DELETE_GOODS':
-            return {...action.payload} ;
+            return {...state.goods,...action.payload} ;
         default:
             return  state ;
     }
