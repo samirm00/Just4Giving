@@ -25,7 +25,7 @@ function SignUpNeeder() {
 
     // get the needer
     const usertype = useSelector(state => state.userInfo.is_needer);
-    const url = "http://localhost:5000/api/needer/signup" ;
+    const url = "/api/needer/signup" ;
 
     const handleSubmit = async (event) => {
         const form = event.currentTarget;

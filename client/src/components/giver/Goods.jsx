@@ -24,7 +24,7 @@ export default function Goods() {
     const user_id = useSelector(state => state.userInfo.user_id) ;
     const createdAt = useSelector(state => state.goods.createdAt) ;
     console.log(user_id) ;
-    const url = `http://localhost:5000/api/user/goods/${user_id}` ;
+    const url = `/api/user/goods/${user_id}` ;
 
     // fetch goods
     const FetchGoods = async () => {

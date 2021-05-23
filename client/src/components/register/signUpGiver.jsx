@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {userGiver, userNeeder} from "../../redux/actions/userInfoAction.js";
 
 function SignUpGiver(props) {
-    const url = "http://localhost:5000/api/giver/signup";
+    const url = "/api/giver/signup";
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState("");
     const [last_name, setLast_name] = useState("");
