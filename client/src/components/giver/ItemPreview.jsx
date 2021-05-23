@@ -1,7 +1,7 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import axios from 'axios';
+import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 const ItemPreview = (props) => {
   // access the state
@@ -30,8 +30,8 @@ const ItemPreview = (props) => {
     taken: 0,
     owner_id: giver_id,
     category_id: 5,
-    createdAt: "2021-05-19T17:52:20.000Z",
-    updatedAt: "2021-05-19T17:52:20.000Z",
+    createdAt: '2021-05-19T17:52:20.000Z',
+    updatedAt: '2021-05-19T17:52:20.000Z',
   };
 
   const handleNewItem = async () => {
