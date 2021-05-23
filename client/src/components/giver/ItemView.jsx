@@ -40,7 +40,7 @@ const ItemView =() => {
             }
 
             dispatch(createGoods(goods_copy)) ;
-            const response = axios.delete(`http://localhost:5000/api/goods/${currentGoodId}`);
+            const response = axios.delete(`/api/goods/${currentGoodId}`);
 
 
         }
