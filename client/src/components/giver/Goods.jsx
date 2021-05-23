@@ -19,15 +19,15 @@ export default function Goods() {
   const dispatch = useDispatch();
 
   // access the state
-  const user_id = useSelector((state) => state.userInfo.user_id);
-  const createdAt = useSelector((state) => state.goods.createdAt);
+  const user_id = useSelector((state) => state.userInfo.user_id);  
   console.log(user_id);
-  const url = `/api/user/goods/${user_id}`;
+  const url = `/api/user/goods/${user_id}`;  
 
   // fetch goods
   const FetchGoods = async () => {
     const response = await axios.get(url);
     const goods = response.data.goods;
+    
 
     // fire an action
     dispatch(createGoods(goods));
@@ -47,7 +47,7 @@ export default function Goods() {
         justifyContent: 'space-evenly',
       }}
     >
-      {goods.map((good, index) => (
+      {Object.values(goods).map((good, index) => (
         <Card
           className="itemCards"
           style={{ flexGrow: 1, width: '18rem' }}

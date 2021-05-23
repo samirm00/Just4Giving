@@ -4,7 +4,7 @@
 //  }
 
 
- export const goodsInfoReducer = (state = [] , action) => {
+ export const goodsInfoReducer = (state = {} , action) => {
     switch (action.type){
         case 'CREATE_GOODS':
             return{ ...state.goods ,...action.payload} ;
