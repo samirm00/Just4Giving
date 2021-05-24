@@ -1,19 +1,19 @@
-//  const initialState = {
-//     goods:[] ,
+ const initialState = {
+    goods:[] ,
 
-//  }
+ }
 
 
- export const goodsInfoReducer = (state = {} , action) => {
+ export const goodsInfoReducer = (state = initialState , action) => {
     switch (action.type){
-        case 'CREATE_GOODS':
-            return{ ...state.goods ,...action.payload} ;
+        case 'CREATE_GOODS':            
+            return Object.assign({},action.payload) ;
 
         case 'UPDATE_GOODS':
-            return{...state.goods, ...action.payload} ;
+            return Object.assign({},action.payload);
 
         case 'DELETE_GOODS':
-            return {...state.goods,...action.payload} ;
+            return Object.assign({},action.payload);
         default:
             return  state ;
     }

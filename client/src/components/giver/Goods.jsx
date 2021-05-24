@@ -12,26 +12,24 @@ import team from '../../assets/landingpage/team.png';
 import { createGoods } from '../../redux/actions/goodsInfoAction';
 
 export default function Goods() {
-  const [goods, setGoods] = useState([]);
+  const [goods, setGoods] = useState({});
   const history = useHistory();
 
   // dispatch an action
   const dispatch = useDispatch();
 
   // access the state
-  const user_id = useSelector((state) => state.userInfo.user_id);  
-  console.log(user_id);
-  const url = `/api/user/goods/${user_id}`;  
+  const user_id = useSelector((state) => state.userInfo.user_id);
+  // console.log(user_id);
+  const url = `/api/user/goods/${user_id}`;
 
   // fetch goods
   const FetchGoods = async () => {
     const response = await axios.get(url);
     const goods = response.data.goods;
-    
-
+    // console.log(goods[0].giver_id);
     // fire an action
-    dispatch(createGoods(goods));
-    console.log(response);
+    dispatch(createGoods(goods));    
     setGoods(goods);
   };
 

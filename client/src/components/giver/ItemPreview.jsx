@@ -13,7 +13,7 @@ const ItemPreview = (props) => {
   const item = props.location.state.item;
   const description = props.location.state.description;
   const category = props.location.state.category;
-  const quality = Number(props.location.state.quality);
+  const quality = props.location.state.quality;
   const quantity = props.location.state.quantity;
   const image = props.location.state.image;
 
