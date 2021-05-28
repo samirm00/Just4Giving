@@ -1,10 +1,10 @@
-const { cryptPassword } = require("../utils/encryption");
-const { Sequelize } = require("sequelize");
-const sequelize = require("../db/db.js");
-const bcrypt = require("bcrypt");
+const { cryptPassword } = require('../utils/encryption');
+const { Sequelize } = require('sequelize');
+const sequelize = require('../db/db.js');
+const bcrypt = require('bcrypt');
 
 const User = sequelize.define(
-    "user",
+    'user',
     {
         user_id: {
             type: Sequelize.INTEGER,
@@ -79,7 +79,7 @@ const User = sequelize.define(
         updatedAt: Sequelize.DATE,
     },
     {
-        tableName: "users",
+        tableName: 'users',
     }
 );
 

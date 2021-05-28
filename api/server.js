@@ -12,7 +12,6 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', require('./routes/home.js'));
 app.use('/', require('./routes/login.js'));
 app.use('/', require('./routes/signup.js'));
@@ -26,5 +25,7 @@ app.use('/', require('./routes/deletegood.js'));
 app.use('/', require('./routes/updategood.js'));
 app.use('/', require('./routes/getGoods.js'));
 app.use('/', require('./routes/goods.js'));
+app.use('/', require('./routes/getGiver.js'));
+app.use('/', require('./routes/sendEmail.js'));
 
 module.exports = app;

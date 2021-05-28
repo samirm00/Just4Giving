@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('./config.js');
 
 // const withAuth = function(req, res, next) {
-//   const token = 
+//   const token =
 //       req.body.token ||
 //       req.query.token ||
 //       req.headers['x-access-token'] ||
@@ -22,18 +22,18 @@ const { JWT_SECRET } = require('./config.js');
 //   }
 // }
 
-const withAuth = function(req, res, next) {
-  const token = req.header('x-auth-token');
-  if (!token) {
+const withAuth = function (req, res, next) {
+    const token = req.header('x-auth-token');
+    if (!token) {
         res.status(401).send('Unauthorized: No token provided');
-  }
-  try {
-    const decoded = jwt.verify(token, JWT_SECRET);    
-    req.mail = decoded;
-    next();
-  } catch(err) {
-     res.status(400).json({message: 'token not valid'})
-  }
-}
+    }
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET);
+        req.mail = decoded;
+        next();
+    } catch (err) {
+        res.status(400).json({ message: 'token not valid' });
+    }
+};
 
 module.exports = withAuth;
