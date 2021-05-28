@@ -1,9 +1,9 @@
-const express = require("express");
+const express = require('express');
 
 // initialize express
 const app = express();
 
-app.get("/upload/test", async (req, res) => {
+app.get('/upload/test', async (req, res) => {
     res.send(
         `<body>
             <form action="/api/upload" method="POST" enctype="multipart/form-data">
