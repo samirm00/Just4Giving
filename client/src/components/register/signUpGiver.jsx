@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+//import Disclaimer from "../disclaimer/Disclaimer";
 
 //Redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +19,7 @@ function SignUpGiver(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmpassword, setConfirmpassword] = useState('');
-
+    //const [modalShow, setModalShow] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const dispatch = useDispatch();
 
@@ -35,7 +36,7 @@ function SignUpGiver(props) {
             setErrorMessage(
                 'Password and Confirm password are not same, try again.'
             );
-
+            // alert("password and confirmpassword does not match");
             event.stopPropagation();
         } else {
             const userdata = {
@@ -61,7 +62,7 @@ function SignUpGiver(props) {
                 });
             } catch (error) {
                 setErrorMessage('Email already exist, Please try Sign In.');
-
+                // alert('email already exist, please try login');
                 console.error('There was an error!', error);
             }
         }

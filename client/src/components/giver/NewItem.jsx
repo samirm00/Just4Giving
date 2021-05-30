@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Col, Button } from 'react-bootstrap';
 import { Redirect, useHistory } from 'react-router-dom';
 import axios from 'axios';
+//import Resizer from 'react-image-file-resizer';
 
 function NewItem() {
     const [validated, setValidated] = useState(false);

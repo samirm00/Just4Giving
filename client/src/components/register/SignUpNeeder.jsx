@@ -39,7 +39,7 @@ function SignUpNeeder() {
             setErrorMessage(
                 'Password and Confirm password are not same, try again'
             );
-
+            // alert("password and confirmpassword does not match");
             event.stopPropagation();
         } else {
             const userdata = {
@@ -63,8 +63,9 @@ function SignUpNeeder() {
                     dispatch(userNeeder(userdata));
                 });
             } catch (error) {
+                // should be error.response.data.message
                 setErrorMessage('Email already exist, Please try Sign In');
-
+                // alert('email already exist, please try login');
                 console.error('There was an error!', error);
             }
         }

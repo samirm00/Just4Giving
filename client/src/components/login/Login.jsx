@@ -41,7 +41,7 @@ function Login() {
                     });
             } catch (error) {
                 setErrorMessage('Email does not exist, Please try Sign Up');
-
+                // alert("please check your credentials")
                 dispatch(signedUserError());
                 console.error('There was an error!', error);
             }

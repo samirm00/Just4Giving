@@ -17,10 +17,11 @@ function Needer() {
 
     // goodsPerCategory
     const goodsPerCategory = useSelector((state) => state.categoryGoods);
-
+    // setGoods(goodsPerCategory);
     console.log(goodsPerCategory);
 
     // details handler function
+
     const detailsHandler = (id) => {
         history.push(`profileneeder/details/${id}`);
     };

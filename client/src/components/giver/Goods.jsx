@@ -4,8 +4,12 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom';
+//import team from '../../assets/landingpage/team.png';
+// component
+// import ItemView from "./ItemView";
 
 // Redux
+//import { createGoods, updateGoods } from '../../redux/actions/goodsInfoAction';
 import { createGoods } from '../../redux/actions/goodsInfoAction';
 
 export default function Goods() {
@@ -26,7 +30,7 @@ export default function Goods() {
         const goods = response.data.goods;
         console.log(goods);
 
-        // dispatch an action
+        // fire an action
         dispatch(createGoods(goods));
         setGoods(goods);
     };

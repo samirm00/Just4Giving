@@ -23,13 +23,31 @@ const DetailsItem = () => {
         fetchItem();
     }, []);
     return (
-        <div className="detailsItemContainer">
+        <div
+            className="detailsItemContainer"
+            // style={{
+            //   display: 'flex',
+            //   justifyContent: 'center',
+            //   alignItems: 'center',
+            // }}
+        >
             <div className="detailsItem">
                 <Card>
+                    {/* <Card.Img className= "detailPict"
+        variant="top"
+        
+        src= {`../assets/images/uploads/${good.image}`}
+        // width="50px"
+            
+        // src={`assets/images/uploads/${good.image}`}
+        /> */}
                     <Card.Body>
                         <img
                             src={`../assets/images/uploads/${good.image}`}
                             className="detailPict"
+                            //  id="preview"
+                            //  width="477"
+                            //  height="477"
                             alt="good"
                         />
                         <Card.Title className="mt-4">
