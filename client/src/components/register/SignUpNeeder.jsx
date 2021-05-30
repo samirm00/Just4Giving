@@ -21,6 +21,7 @@ function SignUpNeeder() {
     const [confirmpassword, setConfirmpassword] = useState('');
     const [modalShow, setModalShow] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [signedin, setSignedin] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -59,8 +60,7 @@ function SignUpNeeder() {
             try {
                 const response = await axios.post(url, userdata).then((res) => {
                     console.log(res);
-                    // dispatch action
-                    dispatch(userNeeder(userdata));
+                    setSignedin(true);                    
                 });
             } catch (error) {
                 // should be error.response.data.message
@@ -73,7 +73,7 @@ function SignUpNeeder() {
         event.preventDefault();
         setValidated(true);
     };
-    if (usertype === 1) return <Redirect to={{ pathname: '/profileneeder' }} />;
+    if (signedin === true) return <Redirect to={{ pathname: '/login' }} />;
 
     return (
         <div className="forms">

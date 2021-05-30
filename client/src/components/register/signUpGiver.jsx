@@ -3,13 +3,11 @@ import { Form, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 //import Disclaimer from "../disclaimer/Disclaimer";
-
 //Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { userGiver } from '../../redux/actions/userInfoAction.js';
-
 function SignUpGiver(props) {
-    const url = '/api/giver/signup';
+    const url = 'http://localhost:5000/api/giver/signup';
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState('');
     const [last_name, setLast_name] = useState('');
@@ -22,7 +20,7 @@ function SignUpGiver(props) {
     //const [modalShow, setModalShow] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const dispatch = useDispatch();
-
+    const [signedin, setSignedin] = useState(false);
     // get the giver
     const usertype = useSelector((state) => state.userInfo.is_giver);
     const handleSubmit = async (event) => {
@@ -52,13 +50,12 @@ function SignUpGiver(props) {
                 is_needer: 0,
                 agreement: 1,
             };
-
             try {
                 const response = await axios.post(url, userdata).then((res) => {
                     console.log(res.data);
-
                     // dispatch action
-                    dispatch(userGiver(userdata));
+                    //dispatch(userGiver(userdata ));
+                    setSignedin(true);
                 });
             } catch (error) {
                 setErrorMessage('Email already exist, Please try Sign In.');
@@ -69,7 +66,7 @@ function SignUpGiver(props) {
         event.preventDefault();
         setValidated(true);
     };
-    if (usertype === 1) return <Redirect to={{ pathname: '/profilegiver' }} />;
+    if (signedin === true) return <Redirect to={{ pathname: '/login' }} />;
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Who are you?</h1>
@@ -218,7 +215,7 @@ function SignUpGiver(props) {
                     {errorMessage && (
                         <div className="error"> {errorMessage} </div>
                     )}
-                    {/* btn-submit float-right 
+                    {/* btn-submit float-right
                     <Button type="submit" className="formb"> */}
                     <Button type="submit" className="btn-submit float-right">
                         Submit
