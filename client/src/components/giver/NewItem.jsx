@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Form, Col, Button, InputGroup } from 'react-bootstrap';
+import { Form, Col, Button } from 'react-bootstrap';
 import { Redirect, useHistory } from 'react-router-dom';
 import axios from 'axios';
-//import Resizer from 'react-image-file-resizer';
 
 function NewItem() {
     const [validated, setValidated] = useState(false);
@@ -21,45 +20,27 @@ function NewItem() {
         const form = event.currentTarget;
         event.preventDefault();
         event.stopPropagation();
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        } else {
-            //name of the image
-            //document.querySelector('input[type=file]').files[0].name
 
-            const file = document.querySelector('input[type=file]').files[0];
-            const url = '/api/upload/';
-
+        if (form.checkValidity() === true) {
             //upload image
             const uploadImg = async () => {
                 const formData = new FormData();
-                formData.append('image', file);
-                const response = await axios.post('/api/upload/', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                });
-                console.log(response);
+                formData.append('image', image, image.name);
+                const response = await axios.post('/api/upload/', formData);
             };
-            uploadImg();
-
-            const newGood = {
-                item: item,
-                category: category,
-                description: description,
-                quality: quality,
-                quantity: quantity,
-                image: image,
-            };
-            console.log(newGood);
-            setForm(true);
+            uploadImg().then(() => {
+                const newGood = {
+                    item: item,
+                    category: category,
+                    description: description,
+                    quality: quality,
+                    quantity: quantity,
+                    image: image,
+                };
+                setForm(true);
+                setValidated(true);
+            });
         }
-        event.preventDefault();
-        setValidated(true);
-
-        // redirect
-        history.push('/newgoods');
     };
     if (form) {
         return (
@@ -79,37 +60,30 @@ function NewItem() {
         );
     }
 
-    const onChangehandler = async (e) => {};
-
     return (
-        <div className='forms'>
-            <h1 className='text-center formh1'>What do you want to give?</h1>
-            <div className='container formview mt'>
+        <div className="forms">
+            <h1 className="text-center formh1">What do you want to give?</h1>
+            <div className="container formview mt">
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Row>
                         <Form.Group>
                             <Form.File
-                                id='img'
-                                onChange={onChangehandler}
-                                label='Image'
-                                name='image'
-                                onChange={(e) =>
-                                    setImage(
-                                        document.querySelector(
-                                            'input[type=file]'
-                                        ).files[0].name
-                                    )
+                                id="img"
+                                label="Image"
+                                name="image"
+                                onChange={(event) =>
+                                    setImage(event.target.files[0])
                                 }
                             />
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
-                        <Form.Group as={Col} md='4'>
+                        <Form.Group as={Col} md="4">
                             <Form.Label>Name</Form.Label>
                             <Form.Control
-                                type='text'
-                                placeholder=' Laptop, Chair, etc...'
-                                aria-describedby='inputGroupPrepend'
+                                type="text"
+                                placeholder=" Laptop, Chair, etc..."
+                                aria-describedby="inputGroupPrepend"
                                 required
                                 onChange={(e) => setItem(e.target.value)}
                             />
@@ -117,70 +91,74 @@ function NewItem() {
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
-                        <Form.Group as={Col} md='6'>
+                        <Form.Group as={Col} md="6">
                             <Form.Label
-                                className='my-1 mr-2'
-                                htmlFor='inlineFormCustomSelectPref'>
+                                className="my-1 mr-2"
+                                htmlFor="inlineFormCustomSelectPref"
+                            >
                                 Categories
                             </Form.Label>
                             <Form.Control
-                                as='select'
-                                className='my-1 mr-sm-2'
-                                id='category'
+                                as="select"
+                                className="my-1 mr-sm-2"
+                                id="category"
                                 custom
-                                onChange={(e) => setCategory(e.target.value)}>
-                                <option value='0'>Select...</option>
-                                <option value='Furnitures' data-id='1'>
+                                onChange={(e) => setCategory(e.target.value)}
+                            >
+                                <option value="0">Select...</option>
+                                <option value="Furnitures" data-id="1">
                                     Furnitures
                                 </option>
-                                <option value='Food' data-id='2'>
+                                <option value="Food" data-id="2">
                                     Food
                                 </option>
-                                <option value='Tools' data-id='3'>
+                                <option value="Tools" data-id="3">
                                     Tools
                                 </option>
-                                <option value='Babies' data-id='4'>
+                                <option value="Babies" data-id="4">
                                     Babies
                                 </option>
-                                <option value='Electronics' data-id='5'>
+                                <option value="Electronics" data-id="5">
                                     Electronics
                                 </option>
-                                <option value='Sport' data-id='6'>
+                                <option value="Sport" data-id="6">
                                     Sport
                                 </option>
-                                <option value='Books' data-id='7'>
+                                <option value="Books" data-id="7">
                                     Books
                                 </option>
-                                <option value='Other' data-id='8'>
+                                <option value="Other" data-id="8">
                                     Other
                                 </option>
                             </Form.Control>
                         </Form.Group>
-                        <Form.Group as={Col} md='4'>
+                        <Form.Group as={Col} md="4">
                             <Form.Label
-                                className='my-1 mr-2'
-                                htmlFor='inlineFormCustomSelectPref'>
+                                className="my-1 mr-2"
+                                htmlFor="inlineFormCustomSelectPref"
+                            >
                                 Quality
                             </Form.Label>
                             <Form.Control
-                                as='select'
-                                className='my-1 mr-sm-2'
-                                id='quality'
+                                as="select"
+                                className="my-1 mr-sm-2"
+                                id="quality"
                                 custom
-                                onChange={(e) => setQuality(e.target.value)}>
-                                <option value='0'>Select...</option>
-                                <option value='New'>New</option>
-                                <option value='Fairly used'>Fairly used</option>
-                                <option value='Heavily used'>
+                                onChange={(e) => setQuality(e.target.value)}
+                            >
+                                <option value="0">Select...</option>
+                                <option value="New">New</option>
+                                <option value="Fairly used">Fairly used</option>
+                                <option value="Heavily used">
                                     Heavily used
                                 </option>
                             </Form.Control>
                         </Form.Group>
-                        <Form.Group as={Col} md='2' controlId='quantity'>
+                        <Form.Group as={Col} md="2" controlId="quantity">
                             <Form.Label>Quantity</Form.Label>
                             <Form.Control
                                 required
-                                type='number'
+                                type="number"
                                 min={0}
                                 onChange={(e) => setQuantity(e.target.value)}
                             />{' '}
@@ -189,19 +167,19 @@ function NewItem() {
                     </Form.Row>
 
                     <Form.Row>
-                        <Form.Group as={Col} md='12' controlId='description'>
+                        <Form.Group as={Col} md="12" controlId="description">
                             <Form.Label>Description</Form.Label>
                             <Form.Control
                                 required
-                                as='textarea'
+                                as="textarea"
                                 rows={3}
-                                placeholder='Please describe the details of the item, e.g. colour, condition, size, etc...'
+                                placeholder="Please describe the details of the item, e.g. colour, condition, size, etc..."
                                 onChange={(e) => setDescription(e.target.value)}
                             />
                             <Form.Control.Feedback></Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
-                    <Button type='submit' className='formb'>
+                    <Button type="submit" className="formb">
                         Submit
                     </Button>
                 </Form>

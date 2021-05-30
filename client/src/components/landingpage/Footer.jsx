@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { Redirect } from 'react-router';
 import Disclaimer from '../disclaimer/Disclaimer';
 import { useHistory } from 'react-router-dom';
 
@@ -9,17 +8,19 @@ function Footer() {
     const [modalShow, setModalShow] = useState(false);
     const history = useHistory();
     return (
-        <div className='main-footer'>
+        <footer className="main-footer mt-auto">
             <Navbar
-                className='d-flex justify-content-between'
-                sticky='Bottom'
+                className="d-flex justify-content-between"
+                sticky="Bottom"
                 collapseOnSelect
-                expand='lg'>
+                expand="lg"
+            >
                 <Nav>
                     <Nav.Item>
                         <Nav.Link
-                            className='footer-priv'
-                            onClick={() => setModalShow(true)}>
+                            className="footer-priv"
+                            onClick={() => setModalShow(true)}
+                        >
                             | Privacy Policy | Disclaimer |
                         </Nav.Link>
                         <Disclaimer
@@ -34,20 +35,22 @@ function Footer() {
                 </Nav>
 
                 <Nav>
-                    <Nav.Item className='footer-item'>
+                    <Nav.Item className="footer-item">
                         <i
                             onClick={() => history.push('/contactus')}
-                            className='fa fa-envelope-square fa-2x mail'
-                            style={{ paddingRight: '20px' }}></i>
-                        <a href='https://github.com/hyf-Group2-fp/Just4Giving'>
+                            className="fa fa-envelope-square fa-2x mail"
+                            style={{ paddingRight: '20px' }}
+                        ></i>
+                        <a href="https://github.com/hyf-Group2-fp/Just4Giving">
                             <i
-                                className='fa fa-github fa-2x github'
-                                aria-hidden='true'></i>
+                                className="fa fa-github fa-2x github"
+                                aria-hidden="true"
+                            ></i>
                         </a>
                     </Nav.Item>
                 </Nav>
             </Navbar>
-        </div>
+        </footer>
     );
 }
 export default Footer;

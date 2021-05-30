@@ -5,27 +5,29 @@ function Disclaimer(props) {
     return (
         <Modal
             {...props}
-            aria-labelledby='contained-modal-title-vcenter'
-            size='xl'
-            className='bg'>
+            aria-labelledby="contained-modal-title-vcenter"
+            size="xl"
+            className="bg"
+        >
             <Modal.Header closeButton>
                 <Modal.Title
-                    id='contained-modal-title-vcenter'
-                    className='p-2 modal-title text-white w-100 text-center'>
+                    id="contained-modal-title-vcenter"
+                    className="p-2 modal-title text-white w-100 text-center"
+                >
                     Privacy Policy | Disclaimer
                 </Modal.Title>
             </Modal.Header>
-            <Modal.Body className='show-grid'>
+            <Modal.Body className="show-grid">
                 <Container>
                     {/* terms of use */}
                     <Row>
-                        <Col lg='4'></Col>
+                        <Col lg="4"></Col>
                         <Col>
-                            <div className='disclaimer-card p-5 m-4' id='terms'>
-                                <h4 className='text-center text-white disclaimer-title'>
+                            <div className="disclaimer-card p-5 m-4" id="terms">
+                                <h4 className="text-center text-white disclaimer-title">
                                     Terms of Use
                                 </h4>
-                                <div className='disclaimer-text text-white mt-4'>
+                                <div className="disclaimer-text mt-4">
                                     Terms of use: By using the app, you consent
                                     to the terms of use, if you do not consent;
                                     do not use App site. The services provided
@@ -53,24 +55,25 @@ function Disclaimer(props) {
                     <Row>
                         <Col>
                             <div
-                                className='disclaimer-card p-5 m-4'
-                                id='privacy'>
-                                <h4 className='text-center text-white disclaimer-title'>
+                                className="disclaimer-card p-5 m-4"
+                                id="privacy"
+                            >
+                                <h4 className="text-center text-white disclaimer-title">
                                     Privacy
                                 </h4>
-                                <div className='disclaimer-text text-white mt-4'>
+                                <div className="disclaimer-text mt-4">
                                     <ul>
-                                        <li>
+                                        <li className="mb-3">
                                             We won’t pass on your phone number
                                             to any organisation outside
                                             JUST4GIVING.
                                         </li>
-                                        <li>
+                                        <li className="mb-3">
                                             As a giver you can get notification
                                             in your email from the needer who
                                             interest in your item.
                                         </li>
-                                        <li>
+                                        <li className="mb-3">
                                             As a needer you can see the email of
                                             the giver and contact them via
                                             email.
@@ -86,25 +89,26 @@ function Disclaimer(props) {
                                 </div>
                             </div>
                         </Col>
-                        <Col lg='4'>
-                            <div className='img-container d-flex justify-content-center align-items-end'>
-                                <div id='img-humaans-space'></div>
+                        <Col lg="4">
+                            <div className="img-container d-flex justify-content-center align-items-end">
+                                <div id="img-humaans-space"></div>
                             </div>
                         </Col>
                     </Row>
                     {/* disclaimer */}
                     <Row>
-                        <Col lg='4'></Col>
+                        <Col lg="4"></Col>
                         <Col>
                             <div
-                                className='disclaimer-card p-5 m-4'
-                                id='disclaimer'>
-                                <h4 className='text-center text-white disclaimer-title'>
+                                className="disclaimer-card p-5 m-4"
+                                id="disclaimer"
+                            >
+                                <h4 className="text-center text-white disclaimer-title">
                                     Disclaimer
                                 </h4>
-                                <div className='disclaimer-text text-white mt-4'>
+                                <div className="disclaimer-text mt-4">
                                     <ul>
-                                        <li>
+                                        <li className="mb-3">
                                             JUST4GIVING puts people who wants to
                                             give items in touch with people who
                                             want those items. Because of how it
@@ -115,7 +119,7 @@ function Disclaimer(props) {
                                             between the person requesting items
                                             and you.
                                         </li>
-                                        <li>
+                                        <li className="mb-3">
                                             Please use common sense when posting
                                             to JUST4GIVING or collecting an
                                             item. Example for the safety, most
@@ -124,7 +128,7 @@ function Disclaimer(props) {
                                             to meet in a cafe or other public
                                             place.
                                         </li>
-                                        <li>
+                                        <li className="mb-3">
                                             JUST4GIVING is a free stuff app, so
                                             you should never hand over money.
                                         </li>

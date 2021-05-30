@@ -1,4 +1,4 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Card, Button } from 'react-bootstrap';
 import moment from 'moment';
@@ -17,37 +17,47 @@ function Needer() {
 
     // goodsPerCategory
     const goodsPerCategory = useSelector((state) => state.categoryGoods);
-    // setGoods(goodsPerCategory);
+
     console.log(goodsPerCategory);
 
     // details handler function
-
     const detailsHandler = (id) => {
         history.push(`profileneeder/details/${id}`);
     };
 
     return (
-        <div className='banner'>
-            <div className='welcome'>
-                <h1> Hallo {first_name} !</h1>
-                <p>Welcome to JUST4GIVING </p>
-            </div>
-            <Categories />
+        <div>
+            <div className="user-space">
+                <div className="banner">
+                    <div className="avatar"></div>
+                    <div className="welcome">
+                        <h1> Hello {first_name} !</h1>
+                        <p>Welcome to JUST4GIVING </p>
+                    </div>
+                </div>
 
+                <div id="category-box">
+                    <Categories />
+                </div>
+            </div>
             <div
+                id="main"
                 style={{
                     display: 'flex',
                     flexWrap: 'wrap',
-                    justifyContent: 'space-evenly',
-                }}>
+                }}
+            >
                 {Object.values(goodsPerCategory).map((good) => (
                     <Card
-                        className='itemCards'
+                        className="itemCards"
                         style={{ flexGrow: 1, width: '18rem' }}
-                        key={good.goods_id}>
+                        key={good.goods_id}
+                    >
                         <Card.Img
-                            src={team}
-                            alt='good'
+                            src={'assets/images/uploads/' + good.image}
+                            // src={team}
+                            alt="good"
+                            className="img-center"
                             style={{ width: '18rem' }}
                         />
                         <Card.Body>
@@ -63,13 +73,14 @@ function Needer() {
                             <Card.Title>{good.item_name}</Card.Title>
 
                             <Card.Text>{good.category}</Card.Text>
-                            <div className='btn-good-group'></div>
+                            <div className="btn-good-group"></div>
 
                             <Button
-                                className='btn-good'
+                                className="btn-good"
                                 size={'sm'}
                                 onClick={() => detailsHandler(good.goods_id)}
-                                variant='info'>
+                                variant="info"
+                            >
                                 Details
                             </Button>
                         </Card.Body>

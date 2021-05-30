@@ -23,30 +23,37 @@ const DetailsItem = () => {
         fetchItem();
     }, []);
     return (
-        <div
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant='top' src='' />
-                <Card.Body>
-                    <Card.Title>Good: {good.item_name}</Card.Title>
-                </Card.Body>
-                <ListGroup className='list-group-flush'>
-                    <ListGroupItem>
-                        Posted At:
-                        {moment
-                            .utc(good.createdAt)
-                            .local(false)
-                            .startOf('seconds')
-                            .fromNow()}
-                    </ListGroupItem>
-                    <ListGroupItem>Category: {good.category}</ListGroupItem>
-                </ListGroup>
-                <Card.Text>Description: {good.description}</Card.Text>
-            </Card>
+        <div className="detailsItemContainer">
+            <div className="detailsItem">
+                <Card>
+                    <Card.Body>
+                        <img
+                            src={`../assets/images/uploads/${good.image}`}
+                            className="detailPict"
+                            alt="good"
+                        />
+                        <Card.Title className="mt-4">
+                            Good: {good.item_name}
+                        </Card.Title>
+                    </Card.Body>
+                    <ListGroup className="list-group-flush">
+                        <ListGroupItem>
+                            Posted At:
+                            {moment
+                                .utc(good.createdAt)
+                                .local(false)
+                                .startOf('seconds')
+                                .fromNow()}
+                        </ListGroupItem>
+                        <ListGroupItem className="detailsrows">
+                            Category: {good.category}
+                        </ListGroupItem>
+                    </ListGroup>
+                    <Card.Text className="detailsrows">
+                        Description: {good.description}
+                    </Card.Text>
+                </Card>
+            </div>
         </div>
     );
 };

@@ -9,27 +9,27 @@ import footer from '../../assets/landingpage/illustartion.png';
 import { Link } from 'react-router-dom';
 function Demo() {
     return (
-        <div className='Demo'>
-            <div className='bg'>
+        <div className="Demo">
+            <div className="bg">
                 <Jumbotron>
                     <h1>Welcome To JUST4GIVING!</h1>
                     <p>
                         <Link to={'/signupneeder'}>
-                            <Button className='btn-sm'>I Need Something</Button>
+                            <Button className="btn-sm">I Need Something</Button>
                         </Link>
                         <Link to={'/signupgiver'}>
-                            <Button className='btn-sm'>
+                            <Button className="btn-sm">
                                 I Want to donate Something
                             </Button>
                         </Link>
                     </p>
                 </Jumbotron>
 
-                <CardDeck className='cards'>
-                    <Card className='shadow-lg rounded card1'>
+                <CardDeck className="cards">
+                    <Card className="shadow-lg card-rounded card-width card1 mt-4">
                         <Card.Body>
-                            <Card.Title id='card1h'>Donate</Card.Title>
-                            <Card.Text id='card1p'>
+                            <Card.Title id="card1h">Donate</Card.Title>
+                            <Card.Text id="card1p">
                                 Don't throw it away, give it away. Help others
                                 to have a better life.
                             </Card.Text>
@@ -39,10 +39,10 @@ function Demo() {
                             />
                         </Card.Body>
                     </Card>
-                    <Card className='shadow-lg rounded card2'>
+                    <Card className="shadow-lg card-width card-rounded card2 mt-4">
                         <Card.Body>
-                            <Card.Title id='card2h'>Help</Card.Title>
-                            <Card.Text id='card2p'>
+                            <Card.Title id="card2h">Help</Card.Title>
+                            <Card.Text id="card2p">
                                 We know you are strong but accepting help is its
                                 own kind of strength.
                             </Card.Text>
@@ -52,10 +52,10 @@ function Demo() {
                             />
                         </Card.Body>
                     </Card>
-                    <Card className='shadow-lg rounded card3'>
+                    <Card className="shadow-lg card-width card-rounded card3 mt-4">
                         <Card.Body>
-                            <Card.Title id='card3h'>Connected</Card.Title>
-                            <Card.Text id='card3p'>
+                            <Card.Title id="card3h">Connected</Card.Title>
+                            <Card.Text id="card3p">
                                 Stay connected. The world is full with nice
                                 people. If you can't find one Be One!
                             </Card.Text>
@@ -67,13 +67,14 @@ function Demo() {
                     </Card>
                 </CardDeck>
 
-                <div className='container'>
-                    <div className='player-wrapper'>
-                        <h2 id='videoh'>Our Vision</h2>
+                <div className="container">
+                    <div className="player-wrapper">
+                        <h2 id="videoh">Our Vision</h2>
                         <ReactPlayer
-                            className='react-player'
-                            width='80%'
-                            height='650px'
+                            className="react-player"
+                            width="100%"
+                            height="100%"
+                            // height="650px"
                             controls={true}
                             url={video}
                         />
@@ -81,7 +82,7 @@ function Demo() {
                 </div>
 
                 <div>
-                    <img className='bg2' src={footer} alt='bg2' />
+                    <img className="bg2" src={footer} alt="bg2" />
                 </div>
             </div>
         </div>

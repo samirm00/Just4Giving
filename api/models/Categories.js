@@ -1,3 +1,4 @@
+// module.exports = Categories;
 const { Sequelize } = require('sequelize');
 const sequelize = require('../db/db.js');
 const Categories = sequelize.define(

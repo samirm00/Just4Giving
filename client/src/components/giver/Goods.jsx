@@ -4,12 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom';
-import team from '../../assets/landingpage/team.png';
-// component
-// import ItemView from "./ItemView";
 
 // Redux
-import { createGoods, updateGoods } from '../../redux/actions/goodsInfoAction';
+import { createGoods } from '../../redux/actions/goodsInfoAction';
 
 export default function Goods() {
     const [goods, setGoods] = useState({});
@@ -29,7 +26,7 @@ export default function Goods() {
         const goods = response.data.goods;
         console.log(goods);
 
-        // fire an action
+        // dispatch an action
         dispatch(createGoods(goods));
         setGoods(goods);
     };
@@ -74,20 +71,22 @@ export default function Goods() {
                 display: 'flex',
                 flexWrap: 'wrap',
                 justifyContent: 'space-evenly',
-            }}>
+            }}
+        >
             {Object.values(goods).map((good, index) => (
                 <Card
-                    className='itemCards'
+                    className="itemCards"
                     style={{ flexGrow: 1, width: '18rem' }}
-                    key={good.goods_id}>
+                    key={good.goods_id}
+                >
                     <Card.Img
                         src={'assets/images/uploads/' + good.image}
-                        className='img-center text-center mt-4'
-                        alt='good'
+                        className="img-center text-center mt-4"
+                        alt="good"
                         style={{ width: '18rem' }}
                     />
                     {/* <Card.Img src={team} alt="good" style={{ width: '18rem' }} /> */}
-                    <Card.Body className='text-center'>
+                    <Card.Body className="text-center">
                         <Card.Text>
                             {' '}
                             {moment
@@ -100,26 +99,29 @@ export default function Goods() {
                         <Card.Title>{good.item_name}</Card.Title>
 
                         <Card.Text>{good.category}</Card.Text>
-                        <div className='btn-good-group'>
+                        <div className="btn-good-group">
                             <Button
-                                className='btn-good'
+                                className="btn-good"
                                 size={'sm'}
                                 onClick={() => detailGood(good.goods_id)}
-                                variant='secondary'>
+                                variant="secondary"
+                            >
                                 Details
                             </Button>
                             <Button
-                                className='btn-good'
+                                className="btn-good"
                                 size={'sm'}
                                 onClick={() => editGood(good.goods_id)}
-                                variant='info'>
+                                variant="info"
+                            >
                                 Edit
                             </Button>
                             <Button
-                                className='btn-good'
+                                className="btn-good"
                                 size={'sm'}
                                 onClick={() => deleteGood(good.goods_id, index)}
-                                variant='danger'>
+                                variant="danger"
+                            >
                                 Delete
                             </Button>
                         </div>
