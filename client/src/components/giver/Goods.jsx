@@ -71,7 +71,7 @@ export default function Goods() {
                         src={good.image}
                         className="img-center text-center mt-4"
                         alt="good"
-                        style={{ width: "18rem" }}
+                        style={{ width: '400px' , height:'300px' }}
                     />
 
                     <Card.Body className="text-center">
