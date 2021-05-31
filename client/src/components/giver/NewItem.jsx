@@ -76,12 +76,17 @@ function NewItem() {
         <div className="forms">
             <h1 className="text-center formh1">What do you want to give?</h1>
             <div className="container formview mt">
-                {/* <form action="http://localhost:8000" method="post" enctype="multipart/form-data">  */}
-                <input
-                    // enctype="multipart/form-data"
-                    type="file"
-                    onChange={(e) => uploadImage(e.target.files[0], e)}
-                ></input>
+                <form
+                    action="/api/upload/"
+                    method="post"
+                    enctype="multipart/form-data"
+                >
+                    <input
+                        // enctype="multipart/form-data"
+                        type="file"
+                        onChange={(e) => uploadImage(e.target.files[0], e)}
+                    ></input>
+                </form>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Row>
                         <Form.Group>
