@@ -77,6 +77,7 @@ function NewItem() {
             <h1 className="text-center formh1">What do you want to give?</h1>
             <div className="container formview mt">
                 <input
+                    enctype="multipart/form-data"
                     type="file"
                     onChange={(e) => uploadImage(e.target.files[0], e)}
                 ></input>
