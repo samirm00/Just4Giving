@@ -13,6 +13,7 @@ const ContactGiver = () => {
     const [subject, setSubject] = useState("");
     const [message, SetMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [success , setSuccess] = useState('') ;
     const { id } = useParams();
     const userInfo = useSelector((state) => state.userInfo);
     // dispatch
@@ -124,7 +125,8 @@ const ContactGiver = () => {
                 const url = "/api/good/sendEmail";
                 const response = await axios.post(url, mailInfo).then((res) => {
                     console.log(res.data);
-                    setErrorMessage("Email successfully sent to giver");
+                    setSuccess("Email successfully sent to giver");
+
                 });
             } catch (error) {
                 setErrorMessage("Something wrong happened, try again later");
@@ -195,6 +197,9 @@ const ContactGiver = () => {
                         </Button>
                         {errorMessage && (
                             <div className="error"> {errorMessage} </div>
+                        )}
+                        {success && (
+                            <div className="success"> {success} </div>
                         )}
                     </Form>
                 </div>

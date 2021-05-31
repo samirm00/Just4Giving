@@ -660,6 +660,10 @@ footer{
     display: flex;
 }
 
+.success{
+  color: green;
+}
+
 .flex-child {
     flex: 1;
 }
