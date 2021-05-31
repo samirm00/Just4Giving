@@ -1,64 +1,59 @@
-import React, { useState } from 'react';
-import { Form, Col, Button } from 'react-bootstrap';
-import { Redirect, useHistory } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState } from "react";
+import { Form, Col, Button } from "react-bootstrap";
+import { Redirect, useHistory } from "react-router-dom";
+import axios from "axios";
 //import Resizer from 'react-image-file-resizer';
-
 function NewItem() {
     const [validated, setValidated] = useState(false);
-    const [item, setItem] = useState('');
-    const [description, setDescription] = useState('');
-    const [category, setCategory] = useState('');
-    const [quality, setQuality] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [image, setImage] = useState('');
+    const [item, setItem] = useState("");
+    const [description, setDescription] = useState("");
+    const [category, setCategory] = useState("");
+    const [quality, setQuality] = useState("");
+    const [quantity, setQuantity] = useState("");
+    const [image, setImage] = useState("");
     const [form, setForm] = useState(false);
-
     // use History
     const history = useHistory();
-    const uploadImage = async (file, event) => {
-        event.preventDefault();
-        event.stopPropagation();
+    const uploadImage = async (file) => {
 
-        alert(file.name);
-        setImage(file);
         const formData = new FormData();
-        formData.append('image', image);
-        await axios.post('/api/upload/', formData, {
-            headers: { 'Content-Type': 'multipart/form-data' },
-        });
+        formData.append("file", file);
+        formData.append("upload_preset", "just4giving");
+        const response = axios
+            .post(
+                "https://api.cloudinary.com/v1_1/dqbx9drnd/image/upload",
+                formData
+            )
+            .then((res) => {
+                console.log(res);
+                const imUrl = res.data.secure_url;
+                setImage(imUrl);
+            });
+
     };
     const handleSubmit = (event) => {
         const form = event.currentTarget;
         event.preventDefault();
         event.stopPropagation();
-
         if (form.checkValidity() === true) {
-            //upload image
-            const uploadImg = async () => {
-                const formData = new FormData();
-                formData.append('image', image, image.name);
-                const response = await axios.post('/api/upload/', formData);
+            const newGood = {
+                item: item,
+                category: category,
+                description: description,
+                quality: quality,
+                quantity: quantity,
+                image: image,
             };
-            uploadImg().then(() => {
-                const newGood = {
-                    item: item,
-                    category: category,
-                    description: description,
-                    quality: quality,
-                    quantity: quantity,
-                    image: image,
-                };
-                setForm(true);
-                setValidated(true);
-            });
+            setForm(true);
+            setValidated(true);
+
         }
     };
     if (form) {
         return (
             <Redirect
                 to={{
-                    pathname: '/itemview',
+                    pathname: "/itemview",
                     state: {
                         item,
                         description,
@@ -71,31 +66,18 @@ function NewItem() {
             />
         );
     }
-
     return (
         <div className="forms">
             <h1 className="text-center formh1">What do you want to give?</h1>
             <div className="container formview mt">
-                <form
-                    action="/api/upload/"
-                    method="post"
-                    enctype="multipart/form-data"
-                >
-                    <input
-                        // enctype="multipart/form-data"
-                        type="file"
-                        onChange={(e) => uploadImage(e.target.files[0], e)}
-                    ></input>
-                </form>
+                <input
+                    type="file"
+                    onChange={(e) => uploadImage(e.target.files[0], e)}
+                ></input>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Row>
                         <Form.Group>
-                            {/*<Form.File*/}
-                            {/*    id="img"*/}
-                            {/*    label="Image"*/}
-                            {/*    name="image"*/}
-                            {/*    onChange={(event) => setImage(event.target.files[0])}*/}
-                            {/*    />*/}
+
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
@@ -182,11 +164,10 @@ function NewItem() {
                                 type="number"
                                 min={0}
                                 onChange={(e) => setQuantity(e.target.value)}
-                            />{' '}
-                            {/*<Form.Control.Feedback></Form.Control.Feedback>*/}
+                            />{" "}
+
                         </Form.Group>
                     </Form.Row>
-
                     <Form.Row>
                         <Form.Group as={Col} md="12" controlId="description">
                             <Form.Label>Description</Form.Label>

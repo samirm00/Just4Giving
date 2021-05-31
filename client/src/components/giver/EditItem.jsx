@@ -1,30 +1,26 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import { Form, Col, Button } from 'react-bootstrap';
-//import { useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
-import { getCategoryId } from './utils';
-
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { Form, Col, Button } from "react-bootstrap";
+import { useHistory, useParams } from "react-router-dom";
+import { getCategoryId } from "./utils";
 function EditItem() {
     const [validated, setValidated] = useState(false);
-    const [item, setItem] = useState('');
-    const [description, setDescription] = useState('');
-    const [category, setCategory] = useState('');
-    const [quality, setQuality] = useState('');
+    const [item, setItem] = useState("");
+    const [description, setDescription] = useState("");
+    const [category, setCategory] = useState("");
+    const [quality, setQuality] = useState("");
     const [quantity, setQuantity] = useState(0);
-    const [image, setImage] = useState('');
-    // const [form, setForm] = useState(false);
+    const [image, setImage] = useState("");
 
-    // use History
     const history = useHistory();
-
     // show the previous good properties
     // get the selected good index
     const { id } = useParams();
-
     useEffect(() => {
         const fetchGood = async () => {
-            const response = await axios.get(`/api/goods/${id}`);
+            const response = await axios.get(
+                `/api/goods/${id}`
+            );
             const good = response.data.good;
             console.log(good);
             setImage(good.image);
@@ -35,7 +31,22 @@ function EditItem() {
         };
         fetchGood();
     }, []);
+    const uploadImage = async (file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "just4giving");
+        const response = axios
+            .post(
+                "https://api.cloudinary.com/v1_1/dqbx9drnd/image/upload",
+                formData
+            )
+            .then((res) => {
+                console.log(res);
+                const imUrl = res.data.secure_url;
+                setImage(imUrl);
+            });
 
+    };
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
         event.preventDefault();
@@ -53,13 +64,12 @@ function EditItem() {
                 quantity: quantity,
                 image: image,
             };
-
             try {
                 const response = await axios.put(
                     `/api/goods/${id}`,
                     updatedGood
                 );
-                console.log('response', response);
+                console.log("response", response);
             } catch (err) {
                 console.error(err);
             }
@@ -67,27 +77,24 @@ function EditItem() {
         }
         event.preventDefault();
         setValidated(true);
-
         // redirect
-        history.push('/profilegiver');
+        history.push("/profilegiver");
     };
-
     return (
         <div className="forms">
             <h1 className="text-center formh1">What do you want to change?</h1>
             <div className="container formview mt">
+                <input
+                    type="file"
+                    onChange={(e) => uploadImage(e.target.files[0], e)}
+                ></input>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                    <Form.Row>
-                        <Form.Group>
-                            <Form.File id="img" label="Image" />
-                        </Form.Group>
-                    </Form.Row>
+                    <Form.Row></Form.Row>
                     <Form.Row>
                         <Form.Group as={Col} md="4">
                             <Form.Label>Name</Form.Label>
                             <Form.Control
                                 type="text"
-                                // placeholder=" Laptop, Chair, etc..."
                                 aria-describedby="inputGroupPrepend"
                                 required
                                 onChange={(e) => setItem(e.target.value)}
@@ -173,7 +180,6 @@ function EditItem() {
                             {/*<Form.Control.Feedback></Form.Control.Feedback>*/}
                         </Form.Group>
                     </Form.Row>
-
                     <Form.Row>
                         <Form.Group as={Col} md="12" controlId="description">
                             <Form.Label>Description</Form.Label>
