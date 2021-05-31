@@ -64,14 +64,14 @@ export default function Goods() {
             {Object.values(goods).map((good, index) => (
                 <Card
                     className="itemCards"
-                    style={{ flexGrow: 1, width: "400px" }}
+                    style={{ flexGrow: 1, width: "18rem" }}
                     key={good.goods_id}
                 >
                     <Card.Img
                         src={good.image}
                         className="img-center text-center mt-4"
                         alt="good"
-                        style={{ width: '400px' , height:'300px' }}
+                        style={{ width:"18rem" }}
                     />
 
                     <Card.Body className="text-center">
