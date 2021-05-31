@@ -16,7 +16,18 @@ function NewItem() {
 
     // use History
     const history = useHistory();
+    const uploadImage = async (file, event) => {
+        event.preventDefault();
+        event.stopPropagation();
 
+        alert(file.name);
+        setImage(file);
+        const formData = new FormData();
+        formData.append('image', image);
+        await axios.post('/api/upload/', formData, {
+            headers: { 'Content-Type': 'unknown' },
+        });
+    };
     const handleSubmit = (event) => {
         const form = event.currentTarget;
         event.preventDefault();
@@ -65,17 +76,19 @@ function NewItem() {
         <div className="forms">
             <h1 className="text-center formh1">What do you want to give?</h1>
             <div className="container formview mt">
+                <input
+                    type="file"
+                    onChange={(e) => uploadImage(e.target.files[0], e)}
+                ></input>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Row>
                         <Form.Group>
-                            <Form.File
-                                id="img"
-                                label="Image"
-                                name="image"
-                                onChange={(event) =>
-                                    setImage(event.target.files[0])
-                                }
-                            />
+                            {/*<Form.File*/}
+                            {/*    id="img"*/}
+                            {/*    label="Image"*/}
+                            {/*    name="image"*/}
+                            {/*    onChange={(event) => setImage(event.target.files[0])}*/}
+                            {/*    />*/}
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
