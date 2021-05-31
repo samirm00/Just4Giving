@@ -25,7 +25,7 @@ function NewItem() {
         const formData = new FormData();
         formData.append('image', image);
         await axios.post('/api/upload/', formData, {
-            headers: { 'Content-Type': 'unknown' },
+            headers: { 'Content-Type': 'multipart/form-data' },
         });
     };
     const handleSubmit = (event) => {
@@ -76,8 +76,9 @@ function NewItem() {
         <div className="forms">
             <h1 className="text-center formh1">What do you want to give?</h1>
             <div className="container formview mt">
+                {/* <form action="http://localhost:8000" method="post" enctype="multipart/form-data">  */}
                 <input
-                    enctype="multipart/form-data"
+                    // enctype="multipart/form-data"
                     type="file"
                     onChange={(e) => uploadImage(e.target.files[0], e)}
                 ></input>
