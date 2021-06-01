@@ -74,7 +74,7 @@ export default function Goods() {
                         style={{ width:"18rem" }}
                     />
 
-                    <Card.Body className="text-center">
+                    <Card.Body className="text-center  d-flex  flex-column">
                         <div className='mt-auto'>
                         <Card.Text>
                             {" "}

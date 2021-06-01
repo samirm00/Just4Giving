@@ -54,7 +54,7 @@ function Needer() {
                             className="img-center"
                             style={{ width: "18rem" }}
                         />
-                        <Card.Body>
+                        <Card.Body className='d-flex  flex-column'>
                             <div className='mt-auto'>
                             <Card.Text>
                                 {" "}
