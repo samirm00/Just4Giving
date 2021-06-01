@@ -114,13 +114,16 @@ function Login() {
                                             Password must be 8 letters
                                         </Form.Control.Feedback>
                                     </Form.Group>
+
+                                    {errorMessage && (
+                                        <div className="error"> {errorMessage} </div>
+                                    )}
                                 </Form.Row>
-                                {errorMessage && (
-                                    <div className="error">
-                                        {' '}
-                                        {errorMessage}{' '}
-                                    </div>
-                                )}
+                                {/*{errorMessage && (*/}
+                                {/*    <div className="error">*/}
+                                {/*        {errorMessage}*/}
+                                {/*    </div>*/}
+                                {/*)}*/}
                                 <Button type="submit" id="formblogin">
                                     Sign-in
                                 </Button>

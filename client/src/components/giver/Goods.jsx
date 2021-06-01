@@ -83,7 +83,7 @@ export default function Goods() {
                                 .startOf("seconds")
                                 .fromNow()}{" "}
                         </Card.Text>
-                        <Card.Title>{good.item_name}</Card.Title>
+                        <Card.Title style ={{color:"#EB822E ", fontsize:"19px"}}>{good.item_name}</Card.Title>
                         <Card.Text>{good.category}</Card.Text>
                         <div className="btn-good-group">
                             <Button
