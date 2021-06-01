@@ -51,7 +51,7 @@ function Needer() {
                         <Card.Img
                             src={good.image}
                             alt="good"
-                            className="img-center"
+                            className="img-center mt-3"
                             style={{ width: "18rem" }}
                         />
                         <Card.Body className='d-flex  flex-column'>

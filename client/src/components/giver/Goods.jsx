@@ -69,7 +69,7 @@ export default function Goods() {
                 >
                     <Card.Img
                         src={good.image}
-                        className="img-center text-center mt-4"
+                        className="img-center text-center mt-3 mr-3 ml-3"
                         alt="good"
                         style={{ width:"18rem" }}
                     />
