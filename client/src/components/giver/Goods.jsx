@@ -75,6 +75,7 @@ export default function Goods() {
                     />
 
                     <Card.Body className="text-center">
+                        <div className='mt-auto'>
                         <Card.Text>
                             {" "}
                             {moment
@@ -110,6 +111,7 @@ export default function Goods() {
                             >
                                 Delete
                             </Button>
+                        </div>
                         </div>
                     </Card.Body>
                 </Card>

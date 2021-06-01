@@ -55,6 +55,7 @@ function Needer() {
                             style={{ width: "18rem" }}
                         />
                         <Card.Body>
+                            <div className='mt-auto'>
                             <Card.Text>
                                 {" "}
                                 {moment
@@ -63,7 +64,7 @@ function Needer() {
                                     .startOf("seconds")
                                     .fromNow()}{" "}
                             </Card.Text>
-                            <Card.Title>{good.item_name}</Card.Title>
+                            <Card.Title style={{color:"#EB822E ", fontsize:"19px"}}>{good.item_name}</Card.Title>
                             <Card.Text>{good.category}</Card.Text>
                             <div className="btn-good-group"></div>
                             <Button
@@ -74,6 +75,7 @@ function Needer() {
                             >
                                 Details
                             </Button>
+                            </div>
                         </Card.Body>
                     </Card>
                 ))}
